@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 
 function RenderCard({item}) {
 
@@ -17,6 +17,18 @@ function RenderCard({item}) {
 
 }
 
+// banner component
+function BannerFeedbackForm() {
+
+  return(
+        <Card>
+        <Link to="/studentfbform">
+          <div>Submit Feedback</div>
+        </Link>
+        </Card>
+  );
+}
+
 function Home(props) {
   return(
       <div className="container">
@@ -30,6 +42,7 @@ function Home(props) {
               <div className="col-12 col-md m-1">
                   <RenderCard item={props.leader} />
               </div>
+              <BannerFeedbackForm />
           </div>
       </div>
   );

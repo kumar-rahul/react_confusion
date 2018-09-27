@@ -5,11 +5,15 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
+import StudentFbForm from './StudentFbFormComponent';
+
 import { Switch, Route, Redirect } from 'react-router-dom';
+
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import { FORM } from '../shared/form';
 
 class Main extends Component {
 
@@ -19,13 +23,10 @@ class Main extends Component {
         dishes: DISHES,
         comments: COMMENTS,
         promotions: PROMOTIONS,
-        leaders: LEADERS
+        leaders: LEADERS,
+        form: FORM
       };
   }
-
-//   onDishSelect(dishId) {
-//     this.setState({ selectedDish: dishId});
-//   }
 
   render() {
     const HomePage = () => {
@@ -51,20 +52,26 @@ class Main extends Component {
         );
     };
 
+    const StudentFbFormPage = () => {
+        return(
+            <StudentFbForm form={this.state.form} />
+        );
+    };
 
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <Switch>
               <Route path='/home' component={HomePage} />
               <Route exact path='/menu' component={MenuPage} />
               <Route path='/menu/:dishId' component={DishWithId} />
               <Route exact path='/contactus' component={Contact} />} />
+              <Route exact path='/studentfbform' component={StudentFbFormPage} />} />              
               <Redirect to="/home" />
         </Switch>
         {/* <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
         <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} /> */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
